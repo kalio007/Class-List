@@ -3,11 +3,11 @@ import { AppContext } from '../Context';
 import User from './User';
 
 const UserList = () => {
-    const [user] = useContext(AppContext);
+    const {users} = useContext(AppContext);
   return (
     <div>
         <h3>Avaliable User</h3>
-        {user.map(user => <User key= {user.Id} />)}
+        {users.map(user => <User key= {user.Id} user={user} />)}
     </div>
   )
 }

@@ -1,7 +1,12 @@
-import React from 'react'
-import UserList from './UserList';
+import React, { useContext } from 'react';
+import { AppContext } from '../Context';
 
 const User = ({user}) => {
+  const { dispacthUserEvent } = useContext(AppContext);
+
+  const handleRemoveUser = () => {
+    dispacthUserEvent('REMOVE_USER', { userId: user.id });
+}
   return (
     <div>
       <h3>{user.name}</h3>
@@ -9,6 +14,7 @@ const User = ({user}) => {
       <div>
         <small>{user.bio}</small>
       </div>
+      <button onClick={handleRemoveUser}>Delete User</button>
     </div>
   );
 }
